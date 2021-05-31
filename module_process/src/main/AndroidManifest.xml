@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dyzn.genesis.module_process">
+
+    <application>
+        <activity
+            android:name=".view.ProcessActivity"
+            android:label="操控中心"
+            android:screenOrientation="portrait" />
+    </application>
+
+</manifest>
