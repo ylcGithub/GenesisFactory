@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.dyzn.genesis.model.view.stl.LookModelViewModel" />
+
+        <variable
+            name="click"
+            type="com.dyzn.genesis.model.view.stl.LookModelActivity.ClickProxy" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.dyzn.genesis.lib_common.widget.AppTitle
+            android:id="@+id/app_title"
+            setTitle="@{vm.title}"
+            titleBackListener="@{()->click.back()}"
+            titleOneTextListener="@{()->click.processing()}"
+            titleTwoTextListener="@{()->click.reduction()}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:right_one_text="@string/processing"
+            app:right_one_text_pressed_color="@color/color_666"
+            app:right_two_text="@string/reduction"
+            app:right_two_text_pressed_color="@color/color_666" />
+
+        <com.dyzn.genesis.lib_common.widget.stl.StlView
+            android:id="@+id/stl_view"
+            bindModel="@{vm.model}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toTopOf="@+id/buy_goods_title"
+            app:layout_constraintTop_toBottomOf="@+id/app_title" />
+
+        <com.dyzn.genesis.lib_common.widget.BuyGoodsBottomTitle
+            android:id="@+id/buy_goods_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <com.dyzn.genesis.lib_common.widget.AppProgressView
+            android:id="@+id/progress_view"
+            progressHintText="@{vm.loadingText}"
+            schedule="@{vm.schedule}"
+            android:layout_width="@dimen/widget_size_100"
+            android:layout_height="@dimen/widget_size_130"
+            android:visibility="@{vm.showProgress?View.VISIBLE:View.GONE}"
+            app:cover_color="@color/color_main_blue"
+            app:hint_text_size="@dimen/font_size_18"
+            app:layout_constraintBottom_toTopOf="@+id/buy_goods_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_title"
+            app:normal_color="@color/color_999"
+            app:ring_width="@dimen/widget_size_5"
+            app:schedule_text_color="@color/color_main_blue"
+            app:schedule_text_size="@dimen/font_size_20" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

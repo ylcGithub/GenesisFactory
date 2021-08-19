@@ -1,0 +1,23 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.dyzn.genesis.module_mine">
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/base_ic_launcher"
+        android:label="@string/mine_app_name"
+        android:roundIcon="@mipmap/base_ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/base_AppTheme"
+        tools:targetApi="donut"
+        tools:ignore="RtlEnabled">
+        <activity android:name=".view.MineActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

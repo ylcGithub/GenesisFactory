@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.dyzn.genesis.model.view.createsuccess.CreateSuccessViewModel" />
+
+        <variable
+            name="click"
+            type="com.dyzn.genesis.model.view.createsuccess.CreateSuccessModelListFragment.ClickProxy" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.dyzn.genesis.lib_common.widget.AppTitle
+            android:id="@+id/app_title"
+            titleBackListener="@{()->click.back()}"
+            titleOneIconListener="@{()->click.clickMessage()}"
+            titleTwoIconListener="@{()->click.clickRightTwo()}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:no_back_icon="true"
+            app:right_one_icon="@drawable/vector_drawable_icon_message"
+            app:right_two_icon="@drawable/model_vector_drawable_diy_create_list" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_diy_model_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/widget_size_15"
+            android:layout_marginEnd="@dimen/widget_size_15" />
+    </LinearLayout>
+</layout>

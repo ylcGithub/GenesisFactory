@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.dyzn.genesis.module_login.util.LoginMatchUtil" alias="match"/>
+        <import type="org.apache.commons.lang3.StringUtils" alias="sUtils"/>
+        <import type="android.view.View" alias="view"/>
+        <variable
+            name="click"
+            type="com.dyzn.genesis.module_login.view.register.RegisterFragment.ClickProxy" />
+        <variable
+            name="vm"
+            type="com.dyzn.genesis.module_login.view.register.RegisterViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+    <com.dyzn.genesis.lib_common.widget.AppTitle
+        android:id="@+id/common_title"
+        titleBackListener="@{()->click.back()}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.dyzn.genesis.lib_common.widget.AppTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/font_size_30"
+        android:layout_marginTop="@dimen/font_size_35"
+        android:text="@string/phone_number_register"
+        android:textColor="@color/color_333"
+        android:textSize="@dimen/font_size_30" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/widget_size_67"
+        android:layout_marginHorizontal="@dimen/widget_size_30"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        tools:ignore="UnusedAttribute">
+
+        <com.dyzn.genesis.lib_common.widget.AppEditText
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/widget_size_67"
+            android:background="@null"
+            android:hint="@string/please_input_phone_number"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:textColor="@color/color_333"
+            android:textColorHint="@color/color_ccc"
+            android:textSize="@dimen/font_size_18"
+            editTextChange="@{vm.phone}"
+            android:gravity="center_vertical"
+            tools:ignore="UnusedAttribute" />
+
+        <com.dyzn.genesis.lib_common.widget.AppImageView
+            android:id="@+id/iv_delete_phone"
+            android:layout_width="@dimen/widget_size_30"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:paddingHorizontal="@dimen/widget_size_7"
+            android:onClick="@{click::deletePhone}"
+            android:src="@drawable/vector_drawable_icon_delete"
+            android:visibility="@{sUtils.isEmpty(vm.phone)?view.GONE:view.VISIBLE}"
+            tools:ignore="ContentDescription" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/widget_min_size_1"
+        android:layout_marginHorizontal="@dimen/widget_size_30"
+        android:background="@color/line"
+        tools:ignore="UnusedAttribute" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/widget_size_67"
+        android:layout_marginHorizontal="@dimen/widget_size_30"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        tools:ignore="UnusedAttribute">
+
+        <com.dyzn.genesis.lib_common.widget.AppEditText
+            android:id="@+id/et_auth_code"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/widget_size_67"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/please_input_auth_code"
+            editTextChange="@{vm.code}"
+            android:textColor="@color/color_333"
+            android:textColorHint="@color/color_ccc"
+            android:textSize="@dimen/font_size_18"
+            tools:ignore="UnusedAttribute" />
+
+        <LinearLayout
+            android:layout_width="@dimen/widget_size_95"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="@dimen/widget_size_1"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/widget_size_20"
+                android:layout_marginBottom="@dimen/widget_size_10"
+                android:background="@color/line" />
+
+            <com.dyzn.genesis.lib_common.widget.AppTextView
+                android:id="@+id/tv_get_auth_code"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:text_pressed_color="@color/color_main_blue_light"
+                android:gravity="center"
+                android:text="@{vm.codeString}"
+                android:enabled="@{match.INSTANCE.kanGetCode(vm.phone,vm.codeString)}"
+                android:onClick="@{vm::getAuthCode}"
+                android:textColor="@{match.INSTANCE.kanGetCode(vm.phone,vm.codeString)?0xff2281EF:0xffCCCCCC}"
+                android:textSize="@dimen/font_size_15" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/widget_min_size_1"
+        android:layout_marginHorizontal="@dimen/widget_size_30"
+        android:background="@color/line"
+        tools:ignore="UnusedAttribute" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/widget_size_67"
+        android:layout_marginHorizontal="@dimen/widget_size_30"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        tools:ignore="UnusedAttribute">
+
+        <com.dyzn.genesis.lib_common.widget.AppEditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/widget_size_67"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/please_enter_your_new_6_9_digit_password"
+            android:maxLength="@integer/max_login_psw_length"
+            android:textColor="@color/color_333"
+            android:textColorHint="@color/color_ccc"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            editTextChange="@{vm.pwd}"
+            android:lines="1"
+            android:textSize="@dimen/font_size_18"
+            tools:ignore="UnusedAttribute" />
+
+        <com.dyzn.genesis.lib_common.widget.AppImageView
+            android:id="@+id/iv_delete_pass1"
+            android:layout_width="@dimen/widget_size_30"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:paddingHorizontal="@dimen/widget_size_7"
+            android:src="@drawable/vector_drawable_icon_delete"
+            android:onClick="@{click::deletePwd1}"
+            android:visibility="@{sUtils.isEmpty(vm.pwd)?view.GONE:view.VISIBLE}"
+            tools:ignore="ContentDescription" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/widget_min_size_1"
+        android:layout_marginHorizontal="@dimen/widget_size_30"
+        android:background="@color/line"
+        tools:ignore="UnusedAttribute" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/widget_size_67"
+        android:layout_marginHorizontal="@dimen/widget_size_30"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        tools:ignore="UnusedAttribute">
+
+        <com.dyzn.genesis.lib_common.widget.AppEditText
+            android:id="@+id/et_confirm_new_password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/widget_size_67"
+            android:background="@null"
+            android:hint="@string/please_confirm_new_password"
+            android:maxLength="@integer/max_login_psw_length"
+            editTextChange="@{vm.confirmPwd}"
+            android:inputType="textPassword"
+            android:textColor="@color/color_333"
+            android:textColorHint="@color/color_ccc"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/font_size_18"
+            tools:ignore="UnusedAttribute" />
+
+        <com.dyzn.genesis.lib_common.widget.AppImageView
+            android:id="@+id/iv_delete_pass2"
+            android:layout_width="@dimen/widget_size_30"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:paddingHorizontal="@dimen/widget_size_7"
+            android:onClick="@{click::deletePwd2}"
+            android:src="@drawable/vector_drawable_icon_delete"
+            android:visibility="@{sUtils.isEmpty(vm.confirmPwd)?view.GONE:view.VISIBLE}"
+            tools:ignore="ContentDescription" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/widget_min_size_1"
+        android:layout_marginHorizontal="@dimen/widget_size_30"
+        android:background="@color/line"
+        tools:ignore="UnusedAttribute" />
+
+    <com.dyzn.genesis.lib_common.widget.AppButton
+        android:id="@+id/btn_register"
+        android:layout_marginTop="@dimen/widget_size_50"
+        android:text="@string/register"
+        tools:ignore="UnusedAttribute"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_size_16"
+        android:textStyle="bold"
+        app:btn_radius="@dimen/widget_size_10"
+        android:enabled="@{match.INSTANCE.kanRegister(vm.phone,vm.code,vm.pwd,vm.confirmPwd)}"
+        android:onClick="@{vm::register}"
+        android:layout_width="match_parent"
+        android:layout_marginStart="@dimen/widget_size_30"
+        android:layout_marginEnd="@dimen/widget_size_30"
+        android:layout_height="@dimen/widget_size_49"/>
+    </LinearLayout>
+</layout>

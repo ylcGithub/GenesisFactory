@@ -1,0 +1,10 @@
+include ':module_mine'
+include ':module_model'
+include ':module_process'
+include ':module_forum'
+include ':module_mall'
+include ':module_login'
+include ':lib_common'
+include ':lib_base_res'
+include ':app'
+rootProject.name = "GenesisFactory"

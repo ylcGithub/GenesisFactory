@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="model_edit">编辑</string>
+    <string name="model_model_list">模型列表</string>
+    <string name="model_crete">创建</string>
+</resources>

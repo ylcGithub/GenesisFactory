@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/model_nav"
+    app:startDestination="@id/create_success_list">
+    <fragment
+        android:id="@+id/create_success_list"
+        android:name="com.dyzn.genesis.model.view.createsuccess.CreateSuccessModelListFragment"
+        android:label="CreateSuccessModelListFragment"
+        tools:layout="@layout/model_create_success_model_list_fragment">
+        <action
+            android:id="@+id/crate_success_to_create_all_model_list"
+            app:destination="@id/create_model" />
+    </fragment>
+    <fragment
+        android:id="@+id/create_model"
+        android:name="com.dyzn.genesis.model.view.create.CreateModelFragment"
+        android:label="创建列表"
+        tools:layout="@layout/model_created_model_fragment" />
+</navigation>

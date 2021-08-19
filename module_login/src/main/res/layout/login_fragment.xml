@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.dyzn.genesis.module_login.util.LoginMatchUtil" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="click"
+            type="com.dyzn.genesis.module_login.view.login.LoginFragment.ClickProxy" />
+
+        <variable
+            name="vm"
+            type="com.dyzn.genesis.module_login.view.login.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <com.dyzn.genesis.lib_common.widget.AppImageView
+            android:id="@+id/iv_finish"
+            android:layout_width="@dimen/widget_size_44"
+            android:layout_height="@dimen/widget_size_44"
+            android:layout_marginEnd="@dimen/widget_size_5"
+            android:onClick="@{click::back}"
+            android:padding="@dimen/widget_size_10"
+            android:src="@drawable/vector_drawable_icon_delete"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <com.dyzn.genesis.lib_common.widget.AppTextView
+            android:id="@+id/tv_pass_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/widget_size_30"
+            android:layout_marginTop="@dimen/widget_size_35"
+            android:onClick="@{vm::usePwdLogin}"
+            android:paddingBottom="@dimen/widget_size_5"
+            android:text="@string/password_login"
+            android:textColor="@color/color_ccc"
+            android:textSize="@dimen/font_size_25"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_finish"
+            app:text_selected_color="@color/color_333" />
+
+        <com.dyzn.genesis.lib_common.widget.AppTextView
+            android:id="@+id/tv_auth_code_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/widget_size_40"
+            android:layout_marginTop="@dimen/widget_size_35"
+            android:onClick="@{vm::useCodeLogin}"
+            android:paddingBottom="@dimen/widget_size_5"
+            android:text="@string/auth_code_login"
+            android:textColor="@color/color_ccc"
+            android:textSize="@dimen/font_size_25"
+            app:layout_constraintLeft_toRightOf="@+id/tv_pass_login"
+            app:layout_constraintTop_toBottomOf="@+id/iv_finish"
+            app:text_selected_color="@color/color_333" />
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_phone"
+            editTextChange="@{vm.phone}"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/widget_size_67"
+            android:layout_marginStart="@dimen/widget_size_30"
+            android:layout_marginEnd="@dimen/widget_size_30"
+            android:background="@null"
+            android:hint="@string/please_input_phone_number"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:textColor="@color/color_333"
+            android:textColorHint="@color/color_ccc"
+            android:textSize="@dimen/font_size_18"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pass_login"
+            tools:ignore="Autofill,UnusedAttribute" />
+
+        <com.dyzn.genesis.lib_common.widget.AppImageView
+            android:id="@+id/iv_delete_phone"
+            android:layout_width="@dimen/widget_size_30"
+            android:layout_height="@dimen/widget_size_67"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/widget_size_30"
+            android:paddingStart="@dimen/widget_size_7"
+            android:paddingEnd="@dimen/widget_size_7"
+            android:src="@drawable/vector_drawable_icon_delete"
+            android:visibility="gone"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pass_login"
+            tools:ignore="ContentDescription" />
+
+        <View
+            android:id="@+id/center_line1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/widget_min_size_1"
+            android:layout_marginHorizontal="@dimen/widget_size_30"
+            android:layout_marginStart="@dimen/widget_size_30"
+            android:layout_marginEnd="@dimen/widget_size_30"
+            android:background="@color/line"
+            app:layout_constraintTop_toBottomOf="@id/et_phone"
+            tools:ignore="UnusedAttribute" />
+
+        <com.dyzn.genesis.lib_common.widget.AppEditText
+            android:id="@+id/et_pass"
+            editTextChange="@{vm.pwd}"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/widget_size_67"
+            android:layout_marginStart="@dimen/widget_size_30"
+            android:layout_marginEnd="@dimen/widget_size_30"
+            android:background="@null"
+            android:hint="@string/please_input_password"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:maxLength="@integer/max_login_psw_length"
+            android:textColor="@color/color_333"
+            android:textColorHint="@color/color_ccc"
+            android:textSize="@dimen/font_size_18"
+            app:layout_constraintTop_toBottomOf="@+id/center_line1"
+            tools:ignore="Autofill,UnusedAttribute" />
+
+        <com.dyzn.genesis.lib_common.widget.AppImageView
+            android:id="@+id/iv_show_pass"
+            android:layout_width="@dimen/widget_size_30"
+            android:layout_height="@dimen/widget_size_67"
+            android:layout_marginEnd="@dimen/widget_size_30"
+            android:paddingStart="@dimen/widget_size_7"
+            android:paddingEnd="@dimen/widget_size_7"
+            android:src="@drawable/vector_drawable_icon_message"
+            android:visibility="gone"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/center_line1"
+            tools:ignore="ContentDescription" />
+
+        <com.dyzn.genesis.lib_common.widget.AppImageView
+            android:id="@+id/iv_delete_pass"
+            android:layout_width="@dimen/widget_size_30"
+            android:layout_height="@dimen/widget_size_67"
+            android:paddingStart="@dimen/widget_size_7"
+            android:paddingEnd="@dimen/widget_size_7"
+            android:src="@drawable/vector_drawable_icon_delete"
+            android:visibility="gone"
+            app:layout_constraintRight_toLeftOf="@+id/iv_show_pass"
+            app:layout_constraintTop_toBottomOf="@+id/center_line1"
+            tools:ignore="ContentDescription" />
+
+        <View
+            android:id="@+id/tv_get_auth_code_left_line"
+            android:layout_width="@dimen/widget_size_1"
+            android:layout_height="@dimen/widget_size_47"
+            android:background="@color/line"
+            app:layout_constraintBottom_toBottomOf="@id/et_pass"
+            app:layout_constraintRight_toLeftOf="@+id/tv_get_auth_code"
+            app:layout_constraintTop_toTopOf="@+id/et_pass" />
+
+        <com.dyzn.genesis.lib_common.widget.AppTextView
+            android:id="@+id/tv_get_auth_code"
+            android:layout_width="@dimen/widget_size_95"
+            android:layout_height="@dimen/widget_size_67"
+            android:layout_marginEnd="@dimen/widget_size_30"
+            android:enabled="@{LoginMatchUtil.INSTANCE.kanGetCodeLogin(vm.phone,vm.codeString,vm.pwdLogin)}"
+            android:gravity="center"
+            android:onClick="@{vm::getCode}"
+            android:text="@{vm.codeString}"
+            android:textColor="@{LoginMatchUtil.INSTANCE.kanGetCodeLogin(vm.phone,vm.codeString,vm.pwdLogin)?0xff2281EF:0xffCCCCCC}"
+            android:textSize="@dimen/font_size_15"
+            android:visibility="@{vm.pwdLogin?View.GONE:View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="@+id/et_pass"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/et_pass"
+            app:text_pressed_color="@color/color_main_blue_light" />
+
+        <View
+            android:id="@+id/center_line2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/widget_min_size_1"
+            android:layout_marginHorizontal="@dimen/widget_size_30"
+            android:layout_marginStart="@dimen/widget_size_30"
+            android:layout_marginEnd="@dimen/widget_size_30"
+            android:background="@color/line"
+            app:layout_constraintTop_toBottomOf="@id/et_pass"
+            tools:ignore="UnusedAttribute" />
+
+        <com.dyzn.genesis.lib_common.widget.AppTextView
+            android:id="@+id/tv_forget_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/widget_size_30"
+            android:layout_marginTop="@dimen/widget_size_15"
+            android:onClick="@{click::forgetPwd}"
+            android:text="@string/forget_password"
+            android:textColor="@color/color_666"
+            android:textSize="@dimen/font_size_15"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/center_line2"
+            app:text_pressed_color="@color/color_333" />
+
+        <com.dyzn.genesis.lib_common.widget.AppTextView
+            android:id="@+id/tv_register_now"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/widget_size_15"
+            android:layout_marginEnd="@dimen/widget_size_30"
+            android:onClick="@{click::register}"
+            android:text="@string/register_now"
+            android:textColor="@color/color_666"
+            android:textSize="@dimen/font_size_15"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/center_line2"
+            app:text_pressed_color="@color/color_333" />
+
+        <com.dyzn.genesis.lib_common.widget.AppButton
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/widget_size_49"
+            android:layout_marginLeft="@dimen/widget_size_30"
+            android:layout_marginTop="@dimen/widget_size_50"
+            android:layout_marginRight="@dimen/widget_size_30"
+            android:enabled="@{LoginMatchUtil.INSTANCE.kanLogin(vm.phone,vm.pwd,vm.pwdLogin)}"
+            android:onClick="@{vm::login}"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_16"
+            app:btn_radius="@dimen/widget_size_10"
+            app:layout_constraintTop_toBottomOf="@+id/tv_register_now"
+            tools:ignore="UnusedAttribute" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login_app_name">登录模块</string>
+    <string name="model_app_name">模型模块</string>
+    <string name="mall_app_name">商城模块</string>
+    <string name="mine_app_name">我的模块</string>
+    <string name="process_app_name">加工模块</string>
+    <string name="forum_app_name">论坛模块</string>
+    <string name="network_fail_please_click">当前网络不给力，请点击页面刷新</string>
+    <string name="it_is_empty">这里空空如也~</string>
+    <string name="buy_now">立即购买</string>
+    <string name="add_to_cart">加入购物车</string>
+    <string name="processing">加工</string>
+    <string name="reduction">还原</string>
+    <string name="thrift_service_title">创世小厂</string>
+    <string name="device_running">机器人服务正在运行中…</string>
+    <string name="login">登录</string>
+    <string name="login_success">登录成功</string>
+    <string name="password_login">密码登录</string>
+    <string name="auth_code">验证码</string>
+    <string name="auth_code_login">验证码登录</string>
+    <string name="please_input_phone_number">请输入电话号码</string>
+    <string name="please_input_password">请输入密码</string>
+    <string name="get_auth_code">获取验证码</string>
+    <string name="forget_password">忘记密码</string>
+    <string name="register_now">立即注册</string>
+    <string name="phone_number">手机号码</string>
+    <string name="phone_number_register">手机号码注册</string>
+    <string name="please_input_auth_code">请输入验证码</string>
+    <string name="please_enter_your_new_6_9_digit_password">请输入一个6至9位的密码</string>
+    <string name="please_confirm_new_password">请再次输入密码</string>
+    <string name="register">注册</string>
+    <string name="register_success">注册成功</string>
+    <string name="retrieve_password">找回密码</string>
+    <string name="new_password">新密码</string>
+    <string name="confirm_new_password">确认新密码</string>
+    <string name="set_password_hint">密码长度6~9位，须包含数字、字母、符号至少2 种或以上元素</string>
+    <string name="sure">确定</string>
+    <string name="delete">删除</string>
+</resources>

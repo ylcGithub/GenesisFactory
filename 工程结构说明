@@ -1,0 +1,12 @@
+项目技术：kotlin + MVVM + 组件化 + jetpack组件 为项目的底层架构
+
+项目的组件化结构：
+lib_base 关于项目公用的,基础的，业务代码
+lib_network 网络访问的模块
+
+module_login 登录模块
+module_mall 商城模块
+module_forum 论坛模块
+module_process 加工操控模块
+module_diy DIY3D模块
+module_mine 我的模块

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_nav"
+    app:startDestination="@id/login_fragment">
+    <fragment
+        android:id="@+id/login_fragment"
+        android:name="com.dyzn.genesis.module_login.view.login.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/login_fragment">
+        <action
+            android:id="@+id/login_to_register"
+            app:destination="@+id/register_fragment" />
+        <action
+            android:id="@+id/login_to_forget"
+            app:destination="@+id/forget_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/register_fragment"
+        android:name="com.dyzn.genesis.module_login.view.register.RegisterFragment"
+        android:label="registerFragment"
+        tools:layout="@layout/login_register_fragment" />
+
+    <fragment
+        android:id="@+id/forget_fragment"
+        android:name="com.dyzn.genesis.module_login.view.forget.ForgetFragment"
+        android:label="ForgetFragment"
+        tools:layout="@layout/login_forget_fragment" />
+</navigation>
